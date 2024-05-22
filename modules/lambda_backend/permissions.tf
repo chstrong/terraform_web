@@ -2,42 +2,34 @@
 resource "aws_iam_role" "lambda_role" {
   name = var.lambda_role_name
 
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "lambda.amazonaws.com"
+  assume_role_policy = jsonencode({
+    "Version" : "2012-10-17",
+    "Statement" : [{
+      "Effect" : "Allow",
+      "Principal" : {
+        "Service" : "lambda.amazonaws.com"
       },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-EOF
+      "Action" : "sts:AssumeRole"
+    }]
+  })
 }
 
 # IAM Policy for Lambda Function
 resource "aws_iam_policy" "lambda_policy" {
   name = var.lambda_policy_name
 
-  policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "dynamodb:PutItem"
+  policy = jsonencode({
+    "Version" : "2012-10-17",
+    "Statement" : [{
+      "Effect" : "Allow",
+      "Action" : [
+        "dynamodb:PutItem",
       ],
-      "Resource": [
-        ${var.dynamodb_todo_table_arn}
-      ]
-    }
-  ]
-}
-EOF
+      "Resource" : [
+        var.dynamodb_todo_table_arn,
+      ],
+    }]
+  })
 }
 
 # Attach Policy to IAM Role

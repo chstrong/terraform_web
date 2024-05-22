@@ -18,7 +18,7 @@ resource "aws_lambda_function" "create_todo_lambda" {
 
 data "archive_file" "hello_lambda" {
   type = "zip"
-  source_file = "./lambda_code/hello/hello_lambda.js"
+  source_file = "./lambda_code/hello/index.mjs"
   output_path = "./lambda_code/hello/hello_lambda.zip"
 }
 
@@ -27,17 +27,17 @@ data "archive_file" "hello_lambda" {
 resource "aws_lambda_function" "hello_lambda" {
   filename = data.archive_file.hello_lambda.output_path
   function_name = "hello_lambda"
-  handler = "exports.handler"
+  handler = "index.handler"
   runtime = "nodejs20.x"
   role = aws_iam_role.lambda_role.arn
+  source_code_hash = "ur23092r0y83ru23jr3opr23ugfd9y"
 }
 
-resource "aws_apigatewayv2_integration" "create_todo_lambda_integration" {
+resource "aws_apigatewayv2_integration" "create_hello_lambda_integration" {
   api_id           = aws_apigatewayv2_api.api.id
   integration_type = "AWS_PROXY"
 
   connection_type           = "INTERNET"
-  content_handling_strategy = "CONVERT_TO_TEXT"
   description               = "Lambda example"
   integration_method        = "POST"
   integration_uri           = aws_lambda_function.hello_lambda.invoke_arn
