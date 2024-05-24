@@ -1,12 +1,11 @@
 module "dynamodb" {
   source = "./modules/dynamodb"
-  todo_table_name = "${var.app_name}-todo-table"
+  app_name = var.app_name
 }
 
 module "cognito" {
   source = "./modules/cognito"
-  user_pool_name = "${var.app_name}_user_pool"
-  user_pool_client_name = "${var.app_name}_user_pool_client"
+  app_name = var.app_name
 }
 
 module "lambda_backend" {

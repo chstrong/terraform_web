@@ -1,5 +1,5 @@
 resource "aws_cognito_user_pool" "main_user_pool" {
-  name = var.user_pool_name
+  name = "${var.app_name}_user_pool"
 
   email_verification_subject = "Your Verification Code"
   email_verification_message = "Please use the following code: {####}"
@@ -46,7 +46,7 @@ resource "aws_cognito_user_pool" "main_user_pool" {
 }
 
 resource "aws_cognito_user_pool_client" "main_user_pool_client" {
-  name                = var.user_pool_client_name
+  name                = "${var.app_name}_user_pool_client"
   user_pool_id = aws_cognito_user_pool.main_user_pool.id
   explicit_auth_flows = ["ALLOW_USER_PASSWORD_AUTH", "ALLOW_USER_SRP_AUTH", "ALLOW_REFRESH_TOKEN_AUTH"]
 

@@ -1,4 +1,4 @@
-variable "todo_table_name" {
-  description = "DynamoDB todo table."
+variable "app_name" {
+  description = "App Name"
   type        = string
 }
