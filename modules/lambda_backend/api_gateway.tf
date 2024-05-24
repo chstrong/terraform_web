@@ -1,6 +1,6 @@
 # HTTP API
 resource "aws_apigatewayv2_api" "api" {
-    name          = var.api_gateway_name
+    name          = "${var.app_name}_api"
     protocol_type = "HTTP"
 }
 

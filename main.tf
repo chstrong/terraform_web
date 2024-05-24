@@ -1,20 +1,18 @@
 module "dynamodb" {
   source = "./modules/dynamodb"
-  todo_table_name = "${var.app-name}-todo-table"
+  todo_table_name = "${var.app_name}-todo-table"
 }
 
 module "cognito" {
   source = "./modules/cognito"
-  user_pool_name = "${var.app-name}-user-pool"
-  user_pool_client_name = "${var.app-name}-user-pool-client"
+  user_pool_name = "${var.app_name}_user_pool"
+  user_pool_client_name = "${var.app_name}_user_pool_client"
 }
 
 module "lambda_backend" {
   source = "./modules/lambda_backend"
-  api_gateway_name = "todo_api"
-  lambda_role_name = "todo_lambda_role"
-  lambda_policy_name = "todo_lambda_policy"
-  aws_region = "us-east-1"
+  app_name = var.app_name
+  aws_region = var.aws_region
   cognito_client_id = module.cognito.cognito_user_pool_client_id
   cognito_userpool_endpoint = module.cognito.cognito_user_pool_endpoint
   dynamodb_todo_table_arn = module.dynamodb.dynamodb_todo_table_arn

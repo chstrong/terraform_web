@@ -26,7 +26,7 @@ data "archive_file" "hello_lambda" {
 
 resource "aws_lambda_function" "hello_lambda" {
   filename = data.archive_file.hello_lambda.output_path
-  function_name = "hello_lambda"
+  function_name = "${var.app_name}_hello_lambda"
   handler = "index.handler"
   runtime = "nodejs20.x"
   role = aws_iam_role.lambda_role.arn
