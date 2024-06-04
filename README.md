@@ -56,3 +56,12 @@ https://urwarrior.medium.com/mapping-of-aws-cognito-options-to-terraform-aabf7ec
 
 https://www.youtube.com/watch?v=vqXLGX0szIQ&t=1426s
 
+## Test Lambda HTTP Functions
+
+```
+curl \
+--header "Content-Type: application/json" \
+--request POST \
+--data '{"id":"ri94303r", "name": "Name1", "content": "Content"}' \
+
+```

@@ -8,13 +8,17 @@ module "cognito" {
   app_name = var.app_name
 }
 
-module "lambda_backend" {
-  source = "./modules/lambda_backend"
+module "http_apigw" {
+  source = "./modules/http_apigw"
   app_name = var.app_name
-  aws_region = var.aws_region
-  cognito_client_id = module.cognito.cognito_user_pool_client_id
-  cognito_userpool_endpoint = module.cognito.cognito_user_pool_endpoint
-  dynamodb_todo_table_arn = module.dynamodb.dynamodb_todo_table_arn
+  stage_name = "dev"
+}
+
+module "hello_resource" {
+  source = "./modules/hello_resource"
+  app_name = var.app_name
+  http_apigw_api_id = module.http_apigw.http_apigw_api_id
+  http_apigw_lambda_execution_arn = module.http_apigw.http_apigw_lambda_execution_arn
 }
 
 #module "web_bucket" {
