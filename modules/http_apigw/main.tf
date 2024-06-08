@@ -34,16 +34,14 @@ resource "aws_apigatewayv2_stage" "api_stage" {
   }
 }
 
-/*
 resource "aws_apigatewayv2_authorizer" "auth" {
   api_id           = aws_apigatewayv2_api.api.id
   authorizer_type  = "JWT"
   identity_sources = ["$request.header.Authorization"]
-  name             = "cognito-authorizer"
+  name             = "${var.app_name}_authorizer"
 
   jwt_configuration {
     audience = [var.cognito_client_id]
     issuer   = "https://${var.cognito_userpool_endpoint}"
   }
 }
-*/

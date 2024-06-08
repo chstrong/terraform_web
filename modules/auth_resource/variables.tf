@@ -18,3 +18,7 @@ variable "aws_region" {
   type        = string
   default = "us-east-1"
 }
+
+variable "http_apigw_authorizer_id" {
+  type = string
+}
