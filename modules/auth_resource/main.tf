@@ -56,21 +56,3 @@ resource "aws_apigatewayv2_route" "auth_lambda_route" {
   authorization_type = "JWT"
   authorizer_id      = var.http_apigw_authorizer_id
 }
-
-
-/*
-resource "aws_apigatewayv2_authorizer" "example" {
-  api_id = aws_apigatewayv2_api.api_v2.id
-
-  authorizer_type = "JWT"
-  identity_sources = ["$request.header.Authorization"]
-
-  name = "test-lambda-authorizer-${terraform.workspace}"
-
-  jwt_configuration {
-    audience = ["example", "example2"]
-    issuer = "https://${aws_cognito_user_pool.example.endpoint}"
-  }
-}
-https://github.com/obytes/apigw-jwt-authorizer
-*/
