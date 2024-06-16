@@ -17,14 +17,14 @@ module "http_apigw" {
 }
 
 module "hello_resource" {
-  source                          = "./modules/hello_resource"
+  source                          = "./modules/resources/hello/index"
   app_name                        = var.app_name
   http_apigw_api_id               = module.http_apigw.http_apigw_api_id
   http_apigw_lambda_execution_arn = module.http_apigw.http_apigw_lambda_execution_arn
 }
 
 module "auth_resource" {
-  source                          = "./modules/auth_resource"
+  source                          = "./modules/resources/auth/index"
   app_name                        = var.app_name
   http_apigw_api_id               = module.http_apigw.http_apigw_api_id
   http_apigw_lambda_execution_arn = module.http_apigw.http_apigw_lambda_execution_arn
@@ -32,7 +32,7 @@ module "auth_resource" {
 }
 
 module "todo_add_resource" {
-  source                          = "./modules/resources/todo_add_resource"
+  source                          = "./modules/resources/todo/add"
   app_name                        = var.app_name
   todo_table                      = module.dynamodb.dynamodb_todo_table
   todo_table_arn                  = module.dynamodb.dynamodb_todo_table_arn
