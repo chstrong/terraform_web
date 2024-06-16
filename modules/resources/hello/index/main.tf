@@ -23,8 +23,8 @@ resource "aws_lambda_permission" "api_gw" {
 
 data "archive_file" "hello_lambda" {
   type = "zip"
-  source_file = "./lambda_code/hello/index.mjs"
-  output_path = "./lambda_code/hello/hello_lambda.zip"
+  source_file = "./lambda_code/hello/index/index.mjs"
+  output_path = "./lambda_code/hello/index/hello_lambda.zip"
 }
 
 # Lambda Function with Zip File

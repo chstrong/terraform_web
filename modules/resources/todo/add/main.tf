@@ -66,8 +66,8 @@ resource "aws_iam_role_policy_attachment" "lambda_attachements" {
 
 data "archive_file" "todo_add_lambda" {
   type = "zip"
-  source_file = "./lambda_code/todo_add/todo_add.py"
-  output_path = "./lambda_code/todo_add/todo_add_lambda.zip"
+  source_file = "./lambda_code/todo/add/todo_add.py"
+  output_path = "./lambda_code/todo/add/todo_add_lambda.zip"
 }
 
 # Lambda Function with Zip File
