@@ -80,13 +80,13 @@ aws cognito-idp initiate-auth \
  --output text
 ```
 
-https://medium.com/carlos-hernandez/user-control-with-cognito-and-api-gateway-4c3d99b2f414
-https://spacelift.io/blog/terraform-api-gateway
-https://andrewtarry.com/posts/aws-http-gateway-with-cognito-and-terraform/
-https://urwarrior.medium.com/mapping-of-aws-cognito-options-to-terraform-aabf7ecd651b
+**Test Login**
 
+```
+curl -H "Authorization: ${TOKEN}" https://elya19mfb3.execute-api.us-east-1.amazonaws.com/auth
+```
 
-https://www.youtube.com/watch?v=vqXLGX0szIQ&t=1426s
+curl -H "Authorization: eyJraWQiOiJZODBSUWZVQnRrcmtLV1AzbVBNYjd6dEVJVUJJb24xNTlhQk5wK295THBVPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI0NGI4YzQxOC02MDcxLTcwMzgtZjhiOC1kNDhlNjIzYzY2NzkiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfMno4djVxNmdjIiwiY29nbml0bzp1c2VybmFtZSI6InRlc3R1c2VyMSIsIm9yaWdpbl9qdGkiOiIxZjIyOGU3Yy1mMjcxLTQ0ODUtOTRlYy1jNzU2ODdkNzE3ZWUiLCJhdWQiOiIzMWdwb3RjdGE5czJxYXRzM2hub2d0cGRrYyIsImV2ZW50X2lkIjoiNzI0YTc3ZDktNDAwZS00YzM0LWFmYzgtM2EyZjU0Njg4YjFiIiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3MTgzMjA0NjAsIm5hbWUiOiJDaHJpcyIsImV4cCI6MTcxODMyNDA2MCwiaWF0IjoxNzE4MzIwNDYwLCJqdGkiOiI4ODQwY2RiZi1jZGU0LTRiYzItYTVmMi1mOGU0NmI0MGQ2NWIiLCJlbWFpbCI6InRlc3R1c2VyMUB0ZXN0LmNvbSJ9.G6iu1weOrdt3SwflIpcBtjajpb8-L-UAmTTGXFtDqxpBPpIq4OI1dJE2my6Er2lsX9qxSy9npikNPrn1wx40fWNa8_d3dTUvPZAZ1PC6eBBhi1oEFH_giR7L66jYeanAIyB_dpHRYUO3YgdW7V0FSjdslEmSwIQzLPkbCGLa6rHxO-ujN6HCchmAuMAehd2_gvfC-69UIrJyJkldT58JHfYgVZGT0aYAhqhg2fzJODoDwuRIdZjQrPjZV072IUALf1t4s_uanAFYsaH8XjTjhOI4UJA-7WJoT8qoWOTi8BrwTYytGUWJ6940hItDwVzVatElcEqPq4L7OyQe_BJ8UA" https://elya19mfb3.execute-api.us-east-1.amazonaws.com/auth
 
 ## Test Lambda HTTP Functions
 
@@ -95,13 +95,15 @@ curl \
 --header "Content-Type: application/json" \
 --request POST \
 --data '{"id":"ri94303r", "name": "Name1", "content": "Content"}' \
-
+https://ulx2fav0k5.execute-api.us-east-1.amazonaws.com/todo/add
 ```
 
+## Tutorials
 
-aws cognito-idp admin-set-user-password \
-     --user-pool-id us-east-1_2z8v5q6gc \
-     --username "chstrong" \
-     --password "Test123456" \
-     --region us-east-1 \
-     --permanent
+https://medium.com/carlos-hernandez/user-control-with-cognito-and-api-gateway-4c3d99b2f414
+https://spacelift.io/blog/terraform-api-gateway
+https://andrewtarry.com/posts/aws-http-gateway-with-cognito-and-terraform/
+https://urwarrior.medium.com/mapping-of-aws-cognito-options-to-terraform-aabf7ecd651b
+https://www.youtube.com/watch?v=vqXLGX0szIQ&t=1426s
+https://mahira-technology.medium.com/deploying-aws-amplify-using-terraform-62be45cd25f2 (Amplify)
+

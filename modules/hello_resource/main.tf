@@ -1,26 +1,5 @@
-/*
-resource "aws_lambda_function" "create_todo_lambda" {
-  filename = "create_todo_lambda.zip" # Replace with your zip file
-  function_name = var.lambda_todo_function_name
-  handler = "handler.handler" # Replace with your handler function
-  runtime = "nodejs20.x" # Replace with your runtime
-  role = aws_iam_role.lambda_role.arn
-
-  environment {
-    variables = {
-      DYNAMODB_TABLE_NAME = module.dynamodb.todo_table_name
-    }
-  }
-}
-*/
-
-# https://ksarath.medium.com/provisioning-aws-api-gateway-using-terraform-95f64b492397
-# https://www.youtube.com/watch?v=7u1p5dieIh8
-
-# Lambda Function Source Code (Replace with your actual script)
-
 resource "aws_iam_role" "lambda_role" {
-  name = "${var.app_name}_lambda_role"
+  name = "${var.app_name}_hello_lambda_role"
 
   assume_role_policy = jsonencode({
     "Version" : "2012-10-17",
